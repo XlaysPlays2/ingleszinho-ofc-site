@@ -18,12 +18,12 @@
         .btn-primary {
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(135deg, #1d4ed8, #3b82f6); /* Azul para destaque */
+            background: linear-gradient(135deg, #cc0000, #ff0000); /* Vermelho do YouTube */
         }
         .btn-primary:hover {
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
             transform: translateY(-2px);
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            background: linear-gradient(135deg, #ff0000, #cc0000);
         }
         /* Estilo para as caixas de informação e projetos */
         .info-card {
@@ -37,6 +37,44 @@
         .content-section {
             transition: opacity 0.5s ease-in-out;
         }
+
+        /* ESTILOS DE ANIMAÇÃO DO HAMBÚRGUER */
+        #menu-toggle {
+            /* Definindo o tamanho do container do ícone */
+            width: 32px;
+            height: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 4px; /* Aumenta a área de toque */
+        }
+
+        .line {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 9px;
+            opacity: 1;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out; /* Transição suave */
+        }
+
+        /* Estado "OPEN" do Menu (Transforma em "X") */
+        #menu-toggle.open .line:nth-child(1) {
+            transform: translateY(10px) rotate(45deg); /* Move para baixo e rotaciona */
+        }
+
+        #menu-toggle.open .line:nth-child(2) {
+            opacity: 0; /* Desaparece a linha do meio */
+            transform: translateX(-100%);
+        }
+
+        #menu-toggle.open .line:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg); /* Move para cima e rotaciona */
+        }
+        /* FIM DOS ESTILOS DE ANIMAÇÃO DO HAMBÚRGUER */
+
     </style>
 </head>
 <body class="min-h-screen">
@@ -47,9 +85,11 @@
         <div class="w-full max-w-md relative mb-12">
             
             <!-- Botão do Menu Hambúrguer (Posicionado top-0 left-0) -->
-            <button id="menu-toggle" class="absolute top-0 left-0 p-2 text-gray-300 hover:text-pink-500 focus:outline-none z-30">
-                <!-- Ícone de Hambúrguer (3 linhas) -->
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <!-- Adicionamos as 3 linhas (spans) para a animação -->
+            <button id="menu-toggle" class="absolute top-0 left-0 text-gray-300 hover:text-pink-500 focus:outline-none z-30">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
             </button>
 
             <!-- Menu Colapsável (Posicionado top-10 left-0) -->
@@ -64,8 +104,12 @@
                 <a href="#" data-target="#section-projetos" class="nav-link block py-2 px-3 text-lg font-medium text-white hover:bg-gray-700 rounded-lg">
                     🚀 Projetos
                 </a>
-                <a href="https://instagram.com/ingleszinho_ofc" target="_blank" class="block py-2 px-3 text-lg font-medium text-pink-500 hover:bg-gray-700 rounded-lg border-t border-gray-700 mt-1 pt-2">
-                    📸 Ver Instagram
+                <a href="https://instagram.com/ingleszinho_ofc" target="_blank" class="block py-2 px-3 text-lg font-medium text-pink-500 hover:bg-gray-700 rounded-lg">
+                    📸 Instagram
+                </a>
+                <!-- NOVO LINK DO YOUTUBE: @xlaysplays -->
+                <a href="https://youtube.com/@xlaysplays" target="_blank" class="block py-2 px-3 text-lg font-medium text-red-500 hover:bg-gray-700 rounded-lg border-t border-gray-700 mt-1 pt-2">
+                    ▶️ YouTube
                 </a>
             </nav>
 
@@ -144,6 +188,8 @@
                     <h3 class="text-xl font-semibold text-purple-400">[ALPHA] Renmant (Em Desenvolvimento)</h3>
                     <p class="text-gray-300">
                         Estou criando um jogo assimétrico e original! O projeto está em fase Alpha e envolve design de níveis, mecânicas de jogo complexas e programação. É meu principal foco atualmente.
+                        <br><br>
+                        <span class="text-xs text-red-400 italic">🤫 Dica: Há conteúdos exclusivos e até 'leaks' do jogo no meu canal @xlaysplays!</span>
                     </p>
                 </div>
 
@@ -162,12 +208,20 @@
         </div>
 
 
-        <!-- LINK PRINCIPAL: Botão de Ação Destacado -->
+        <!-- LINK PRINCIPAL: Botão de Ação Destacado (FOCANDO NO YOUTUBE @xlaysplays) -->
         <section class="mb-8 w-full max-w-md mt-6">
-            <a href="https://instagram.com/ingleszinho_ofc" target="_blank" class="block w-full text-center py-4 rounded-xl btn-primary font-bold text-lg uppercase tracking-wider shadow-lg">
-                📸 Ver Todos os Posts e Me Seguir no Instagram
+            <a href="https://youtube.com/@xlaysplays" target="_blank" class="block w-full text-center py-4 rounded-xl btn-primary font-bold text-lg uppercase tracking-wider shadow-lg">
+                ▶️ Assista Meus Vídeos no YouTube (@xlaysplays)
             </a>
         </section>
+        
+        <!-- Link Secundário para Instagram -->
+        <section class="mb-8 w-full max-w-md -mt-4">
+            <a href="https://instagram.com/ingleszinho_ofc" target="_blank" class="block w-full text-center py-3 rounded-xl bg-gray-700 text-gray-200 hover:bg-gray-600 transition font-medium text-md uppercase tracking-wider shadow-lg">
+                📸 Ver Posts no Instagram
+            </a>
+        </section>
+
 
         <!-- Rodapé SIMPLIFICADO -->
         <footer class="text-center pt-8 w-full max-w-sm">
@@ -195,6 +249,7 @@
             function showSection(targetId) {
                 // 1. Esconde o menu
                 menu.classList.add('hidden');
+                toggleButton.classList.remove('open'); // Fecha o menu (remove animação 'X')
                 
                 // 2. Itera sobre todas as seções para controlar a visibilidade e a transição
                 for (const id in sections) {
@@ -224,8 +279,10 @@
             }
             
             // Configura o toggle do menu hambúrguer
-            toggleButton.addEventListener('click', () => {
+            toggleButton.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita que o click no botão feche o menu imediatamente
                 menu.classList.toggle('hidden');
+                toggleButton.classList.toggle('open'); // Adiciona/remove a classe para a animação
             });
             
             // Configura os links do menu e do título principal para trocar as seções
@@ -245,6 +302,7 @@
                 const isClickInside = menu.contains(event.target) || toggleButton.contains(event.target) || document.getElementById('main-title-link').contains(event.target);
                 if (!isClickInside && !menu.classList.contains('hidden')) {
                     menu.classList.add('hidden');
+                    toggleButton.classList.remove('open'); // Remove a animação 'X' ao fechar
                 }
             });
             
