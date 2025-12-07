@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INGLESZINHO OFC - Meu Site Oficial</title>
-    <!-- Carregando Tailwind CSS -->
+    <!-- Carregando Tailwind CSS para estilização moderna e responsiva -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Configuração de Fonte Global (Inter para modernidade) */
@@ -25,7 +25,7 @@
             transform: translateY(-2px);
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
         }
-        /* Estilo para a caixa de 'O que eu faço?' e 'Projetos' */
+        /* Estilo para as caixas de informação e projetos */
         .info-card {
             background-color: #1a1e26;
             padding: 1.5rem;
@@ -33,7 +33,7 @@
             border: 1px solid #2d333b;
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
         }
-        /* Estilos para a animação de transição de conteúdo */
+        /* Estilos para a animação de transição de conteúdo (efeito "fade") */
         .content-section {
             transition: opacity 0.5s ease-in-out;
         }
@@ -46,22 +46,22 @@
         <!-- NAV/MENU WRAPPER: Fica fixo no topo da área de conteúdo -->
         <div class="w-full max-w-md relative mb-12">
             
-            <!-- Botão do Menu Hambúrguer (top-0 left-0) -->
+            <!-- Botão do Menu Hambúrguer (Posicionado top-0 left-0) -->
             <button id="menu-toggle" class="absolute top-0 left-0 p-2 text-gray-300 hover:text-pink-500 focus:outline-none z-30">
                 <!-- Ícone de Hambúrguer (3 linhas) -->
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
 
-            <!-- Menu Colapsável (top-10 left-0) -->
+            <!-- Menu Colapsável (Posicionado top-10 left-0) -->
             <nav id="mobile-menu" class="hidden absolute top-10 left-0 w-48 bg-gray-800 rounded-xl shadow-2xl border border-gray-700 p-2 z-20">
                 <!-- Data-target usado para a função JavaScript saber qual seção mostrar -->
-                <a href="#" data-target="#section-home" class="block py-2 px-3 text-lg font-medium text-white hover:bg-gray-700 rounded-lg">
+                <a href="#" data-target="#section-home" class="nav-link block py-2 px-3 text-lg font-medium text-white hover:bg-gray-700 rounded-lg">
                     🏠 Início
                 </a>
-                <a href="#" data-target="#section-faco" class="block py-2 px-3 text-lg font-medium text-white hover:bg-gray-700 rounded-lg">
+                <a href="#" data-target="#section-faco" class="nav-link block py-2 px-3 text-lg font-medium text-white hover:bg-gray-700 rounded-lg">
                     🤔 O Que Eu Faço?
                 </a>
-                <a href="#" data-target="#section-projetos" class="block py-2 px-3 text-lg font-medium text-white hover:bg-gray-700 rounded-lg">
+                <a href="#" data-target="#section-projetos" class="nav-link block py-2 px-3 text-lg font-medium text-white hover:bg-gray-700 rounded-lg">
                     🚀 Projetos
                 </a>
                 <a href="https://instagram.com/ingleszinho_ofc" target="_blank" class="block py-2 px-3 text-lg font-medium text-pink-500 hover:bg-gray-700 rounded-lg border-t border-gray-700 mt-1 pt-2">
@@ -69,9 +69,9 @@
                 </a>
             </nav>
 
-            <!-- O título é agora um botão clicável para voltar ao início -->
+            <!-- O título é um link clicável para voltar ao início -->
             <div class="text-center w-full">
-                <a href="#" id="main-title-link" class="cursor-pointer">
+                <a href="#" id="main-title-link" data-target="#section-home" class="cursor-pointer">
                     <!-- Avatar do Perfil -->
                     <div class="w-24 h-24 mx-auto mb-4 rounded-full border-4 border-pink-500 overflow-hidden">
                         <img src="image_8eb636.jpg" 
@@ -90,7 +90,7 @@
         <!-- CONTAINER QUE MANTÉM APENAS UMA SEÇÃO VISÍVEL POR VEZ -->
         <div id="content-area" class="w-full max-w-md">
 
-            <!-- HOME/HEADER SECTION (Visível por padrão) -->
+            <!-- SEÇÃO 1: HOME/BIO (Visível por padrão) -->
             <section id="section-home" class="content-section opacity-100">
                 <!-- BIO CURTA E INFORMATIVA -->
                 <div class="bg-gray-800 p-4 rounded-xl border border-gray-700">
@@ -100,7 +100,7 @@
                 </div>
             </section>
         
-            <!-- SEÇÃO: O QUE EU FAÇO? (Invisível por padrão) -->
+            <!-- SEÇÃO 2: O QUE EU FAÇO? (Invisível por padrão) -->
             <section id="section-faco" class="content-section hidden opacity-0">
                 <h2 class="text-2xl font-bold text-white mb-4 text-center border-b border-gray-700 pb-2">
                     🎮 O Que Eu Faço?
@@ -123,34 +123,36 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO: PROJETOS (Invisível por padrão) -->
+            <!-- SEÇÃO 3: PROJETOS (Invisível por padrão) -->
             <section id="section-projetos" class="content-section hidden opacity-0">
                 <h2 class="text-2xl font-bold text-white mb-4 text-center border-b border-gray-700 pb-2">
                     🚀 Meus Projetos
                 </h2>
                 
-                <!-- CARD NOVO: O que é Jogo Assimétrico? -->
-                <div class="info-card space-y-4 mb-6">
+                <!-- CARD: O que é Jogo Assimétrico? (Explicação) -->
+                <div class="info-card space-y-4 mb-6 border-pink-500 border-2">
                     <h3 class="text-xl font-semibold text-pink-400">O que é um Jogo Assimétrico?</h3>
                     <p class="text-gray-300">
-                        É um tipo de jogo multiplayer onde os jogadores têm **objetivos, habilidades e até mesmo jogabilidades totalmente diferentes** uns dos outros. 
+                        É um tipo de jogo multiplayer onde os jogadores têm **objetivos, habilidades e até mesmo jogabilidades totalmente diferentes** uns dos outros.
                         <br><br>
-                        *Exemplo:* Um lado pode ser um monstro poderoso que caça, e o outro, quatro sobreviventes mais fracos que precisam trabalhar em equipe para fugir. É o que torna o *[ALPHA] Renmant* tão único!
+                        *Exemplo:* Um lado pode ser um monstro poderoso que caça, e o outro, quatro sobreviventes mais fracos que precisam trabalhar em equipe para fugir. É o que torna o seu jogo único!
                     </p>
                 </div>
-                <!-- FIM CARD NOVO -->
                 
+                <!-- CARD: [ALPHA] Renmant -->
                 <div class="info-card space-y-4 mb-6">
+                    <h3 class="text-xl font-semibold text-purple-400">[ALPHA] Renmant (Em Desenvolvimento)</h3>
+                    <p class="text-gray-300">
+                        Estou criando um jogo assimétrico e original! O projeto está em fase Alpha e envolve design de níveis, mecânicas de jogo complexas e programação. É meu principal foco atualmente.
+                    </p>
+                </div>
+
+                <!-- CARD: Outros Projetos -->
+                <div class="info-card space-y-4">
                     <h3 class="text-xl font-semibold text-yellow-400">Website Oficial (Este aqui!)</h3>
                     <p class="text-gray-300">
                         Meu primeiro projeto de código, feito para centralizar todos os meus links e informações de uma forma simples e moderna.
                     </p>
-                    
-                    <h3 class="text-xl font-semibold text-purple-400">[ALPHA] Renmant (Em Desenvolvimento)</h3>
-                    <p class="text-gray-300">
-                        Estou criando um jogo assimétrico e original! O projeto está em fase Alpha e envolve design de níveis, mecânicas de jogo complexas e programação.
-                    </p>
-                    
                     <h3 class="text-xl font-semibold text-blue-400">Vlogs de Viagem</h3>
                     <p class="text-gray-300">
                         Planejamento e gravação de mini-vlogs das minhas viagens de família, com foco em edição rápida e trilhas sonoras animadas.
@@ -160,8 +162,8 @@
         </div>
 
 
-        <!-- LINK PRINCIPAL MANTIDO -->
-        <section class="mb-8 w-full max-w-md">
+        <!-- LINK PRINCIPAL: Botão de Ação Destacado -->
+        <section class="mb-8 w-full max-w-md mt-6">
             <a href="https://instagram.com/ingleszinho_ofc" target="_blank" class="block w-full text-center py-4 rounded-xl btn-primary font-bold text-lg uppercase tracking-wider shadow-lg">
                 📸 Ver Todos os Posts e Me Seguir no Instagram
             </a>
@@ -198,21 +200,25 @@
                 for (const id in sections) {
                     const section = sections[id];
                     
+                    // Garante que o elemento existe antes de tentar manipulá-lo
+                    if (!section) continue;
+
                     if (id === targetId) {
                         // Mostra a seção alvo com transição de opacidade
                         section.classList.remove('hidden');
+                        // Um pequeno delay garante que o navegador reconheça a remoção do 'hidden' antes de aplicar a transição
                         setTimeout(() => {
                             section.classList.remove('opacity-0');
                             section.classList.add('opacity-100');
-                        }, 10); // Pequeno delay para garantir que o hidden seja removido antes da transição
+                        }, 10); 
                     } else {
                         // Esconde as outras seções
                         section.classList.remove('opacity-100');
                         section.classList.add('opacity-0');
-                        // Remove 'hidden' após a transição de opacidade
+                        // Adiciona 'hidden' após a transição de opacidade terminar (0.5s)
                         setTimeout(() => {
                             section.classList.add('hidden');
-                        }, 500); // Deve ser igual ou maior que a duração da transição (0.5s)
+                        }, 500); 
                     }
                 }
             }
@@ -222,20 +228,17 @@
                 menu.classList.toggle('hidden');
             });
             
-            // Configura os links do menu para trocar as seções
-            menu.querySelectorAll('a[data-target]').forEach(link => {
+            // Configura os links do menu e do título principal para trocar as seções
+            document.querySelectorAll('.nav-link, #main-title-link').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault(); 
                     const target = link.getAttribute('data-target');
-                    showSection(target);
+                    if (target) {
+                        showSection(target);
+                    }
                 });
             });
 
-            // Configura o link do título principal para voltar à HOME
-            document.getElementById('main-title-link').addEventListener('click', (e) => {
-                e.preventDefault();
-                showSection('#section-home');
-            });
             
             // Fechar o menu se clicar fora
             document.addEventListener('click', (event) => {
